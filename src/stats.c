@@ -1,6 +1,5 @@
 #include <math.h>
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
 
 //-------------------------
@@ -65,8 +64,8 @@ double mean(const double x[]){
 double var(const double x[]){
 
     int n = x.size();
-    double s_squared = 0.0;
     double xbar = mean(x);
+    double s_squared = 0.0;
 
     for (int i = 0; i < n; i++) {
         s_squared += (x[i]-xbar)*(x[i]-xbar);
@@ -109,6 +108,35 @@ double pearson_corr(const double x[], const double y[]){
 
     double r = numerator / denominator;
     return r;
+}
+
+// Spearman correlation
+
+double spearman_corr(const double x[], const double y[]){
+
+    int n = x.size();
+
+    // Sort and rank x and y vectors
+
+    const int x_rank[n];
+    const int y_rank[n];
+
+    //
+
+    // Compute squared sum of rank differences
+
+    double d = 0.0;
+
+    for (int i = 0; i < n; i++) {
+        d += x_rank[i] - y_rank[i];
+    }
+
+    double d_sq = sqrt(d);
+
+    // Return Spearman correlation
+
+    double rho = 1 - ((6 * d_sq) / (n * ((n*n) - 1)));
+    return rho;
 }
 
 // Autocorrelation
