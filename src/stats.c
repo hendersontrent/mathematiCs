@@ -24,7 +24,7 @@ double mininum(const double x[]){
 
 // Maximum
 
-double max_(const double x[]){
+double maximum(const double x[]){
 
     int n = x.size();
     double m = x[0];
