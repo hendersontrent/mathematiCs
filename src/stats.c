@@ -84,6 +84,64 @@ double sd(const double x[]){
     return s;
 }
 
+// Kurtosis
+
+double kurtosis(const double x[]){
+
+    int n = x.size();
+    double mu = mean(x);
+
+    // Calculate fourth moment
+
+    double moment4 = 0.0;
+
+    for (int i = 0; i < n; ++i) {
+        moment4 += (x[i]-mu)*(x[i]-mu)*(x[i]-mu)*(x[i]-mu);
+    }
+
+    // Calculate second moment
+
+    double moment2 = 0.0;
+
+    for (int i = 0; i < n; ++i) {
+        moment2 += (x[i]-mu)*(x[i]-mu);
+    }
+
+    // Calculate kurtosis
+
+    double r = n * moment4 / (moment2 * moment2);
+    double kurtosis = r * ((1 - 1 / n) * (1 - 1 / n)) - 3;
+    return kurtosis;
+}
+
+// Skewness
+
+double skewness(const double x[]){
+
+    int n = x.size();
+    double mu = mean(x);
+    double sigma = sd(x);
+
+    // Calculate G
+
+    double G = sqrt((n*(n-1)))/(n-2);
+
+    // Calculate skewness
+
+    double total_skew = 0.0;
+
+    for (int i = 0; i < n; ++i) {
+        total_skew += ((x[i]-mu)*(x[i]-mu)*(x[i]-mu))/n;
+    }
+
+    double skewness = total_skew / (sigma * sigma * sigma);
+
+    // Adjust skewness
+
+    double adj_skewness = G * skewness;
+    return adj_skewness;
+}
+
 //--------------------
 // Statistical methods
 //--------------------
