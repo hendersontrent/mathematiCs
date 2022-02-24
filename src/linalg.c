@@ -1,11 +1,9 @@
-#include <math.h>
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
 
-//------------------------------------------
-// Define basic vector and matrix operations
-//------------------------------------------
+//-------------------------------
+// Define basic vector operations
+//-------------------------------
 
 // Vector addition
 
@@ -58,3 +56,9 @@ double dot_prod(const double x[], const double y[]){
     }
     return dp;
 }
+
+//-------------------------------
+// Define basic matrix operations
+//-------------------------------
+
+
