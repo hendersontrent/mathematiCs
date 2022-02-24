@@ -150,7 +150,13 @@ double skewness(const double x[]){
 
 double pearson_corr(const double x[], const double y[]){
 
-    int n = x.size();
+    int nx = x.size();
+    int ny = y.size();
+
+    if(nx != ny){
+        return;
+    }
+
     double xbar = mean(x);
     double ybar = mean(y);
     double numerator = 0.0;
@@ -158,7 +164,7 @@ double pearson_corr(const double x[], const double y[]){
 
     // Calculate numerator
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < nx; i++) {
         numerator += (x[i]-xbar) * (y[i]-ybar);
     }
     
@@ -172,7 +178,12 @@ double pearson_corr(const double x[], const double y[]){
 
 double spearman_corr(const double x[], const double y[]){
 
-    int n = x.size();
+    int nx = x.size();
+    int ny = y.size();
+
+    if(nx != ny){
+        return;
+    }
 
     // Sort and rank x and y vectors
 
@@ -185,7 +196,7 @@ double spearman_corr(const double x[], const double y[]){
 
     double d = 0.0;
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < nx; i++) {
         d += x_rank[i] - y_rank[i];
     }
 

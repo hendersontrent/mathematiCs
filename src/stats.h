@@ -11,6 +11,8 @@ extern double sum(const double x[]);
 extern double mean(const double x[]);
 extern double var(const double x[]);
 extern double sd(const double x[]);
+extern double kurtosis(const double x[]);
+extern double skewness(const double x[]);
 extern double pearson_corr(const double x[], const double y[]);
 extern double spearman_corr(const double x[], const double y[]);
 extern double autocorr(const double x[]);
